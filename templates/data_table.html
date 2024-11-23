@@ -1,0 +1,14 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Table</title>
+</head>
+<body>
+    {{ data_table | safe }}
+
+    <form action="{{ url_for('return_to_add') }}" method="POST">
+        <button type="submit">Return</button>
+    </form>
+</body>
+</html>

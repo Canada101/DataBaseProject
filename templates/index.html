@@ -39,5 +39,10 @@
         <input type="number" id="id" name="id" required><br>
         <button type="submit">Remove Part</button>
     </form>
+
+    <h2>Show Table</h2>
+    <form action="{{ url_for('show_table') }}" method="POST">
+        <button type="submit">Show Table</button>
+    </form>
 </body>
 </html>
