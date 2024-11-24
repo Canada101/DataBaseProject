@@ -59,6 +59,26 @@ def show_table():
     
     return render_template('data_table.html', data_table=table_html)
 
+@app.route('/search_part', methods=['GET'])
+def search_part():
+    part_id = request.args.get('id')
+
+    connection = get_db_connection()
+    cursor = connection.cursor()
+
+    cursor.execute('SELECT * FROM parts WHERE id = %s', (part_id,))
+    result = cursor.fetchone()
+    connection.close()
+
+    if result:
+        df = pd.DataFrame([result], columns=['ID', 'Type', 'Length', 'Width', 'Height', 'Manufacturer'])
+        table_html = df.to_html(index=False)
+    else:
+        table_html = "<p>Part with entered ID couldn't be found</p>"
+
+    return render_template('data_table.html', data_table=table_html)
+
+
 @app.route('/return_to_add', methods=['POST'])
 def return_to_add():
     return render_template('index.html')
