@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +5,7 @@
 </head>
 <body>
     {{ data_table | safe }}
-
-    <form action="{{ url_for('return_to_add') }}" method="POST">
+    <form action="{{ url_for('index') }}" method="GET">
         <button type="submit">Return</button>
     </form>
 </body>
